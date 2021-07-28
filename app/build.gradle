@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.caption.starbarexample"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(":GStarBar")
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'junit:junit:4.13.2'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+}
