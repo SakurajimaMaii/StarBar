@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,40 +8,48 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="com.caption.starbarexample.MainActivity">
+
+    <Button
+        android:id="@+id/button_1"
+        android:text="@string/app_name"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+    <Button
+        android:id="@+id/button_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 
     <com.gcode.gstarbar.GStarBarView
         android:id="@+id/sbv_starbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:space_width="1dp"
-        app:star_height="25dp"
-        app:star_hollow="@mipmap/ic_star_yellow_normal"
-        app:star_isIndicator="false"
-        app:star_max="5"
-        app:star_orientation="horizontal"
-        app:star_rating="2"
-        app:star_solid="@mipmap/ic_star_yellow_selected"
-        app:star_width="25dp"
         android:layout_marginTop="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        app:star_height="25dp"
+        app:star_max="5"
+        app:star_normal="@mipmap/ic_star_yellow_normal"
+        app:star_orientation="star_horizontal"
+        app:star_rating="2"
+        app:star_select_method="star_sliding_operation"
+        app:star_selected="@mipmap/ic_star_yellow_selected"
+        app:star_space_width="1dp"
+        app:star_width="25dp" />
 
     <com.gcode.gstarbar.GStarBarView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:space_width="1dp"
-        app:star_height="25dp"
-        app:star_hollow="@mipmap/ic_star_yellow_normal"
-        app:star_isIndicator="false"
+        app:star_space_width="1dp"
+        app:star_height="40dp"
+        app:star_normal="@mipmap/ic_star_yellow_normal"
+        app:star_select_method="star_click_operation"
         app:star_max="5"
-        app:star_orientation="vertical"
+        app:star_orientation="star_vertical"
         app:star_rating="2"
-        app:star_solid="@mipmap/ic_star_yellow_selected"
-        app:star_width="25dp"
+        app:star_selected="@mipmap/ic_star_yellow_selected"
+        app:star_width="40dp"
         android:layout_marginTop="61dp"
-        android:id="@+id/starBarView"
-        android:layout_below="@+id/sbv_starbar"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/starBarView" />
 
-</RelativeLayout>
+</LinearLayout>

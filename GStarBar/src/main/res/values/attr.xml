@@ -2,25 +2,29 @@
 <resources>
     <declare-styleable name="GStarBarView">
         <!--设置星星间的间隔-->
-        <attr name="space_width" format="dimension" />
-        <!--星星间宽度-->
+        <attr name="star_space_width" format="dimension" />
+        <!--星星宽度-->
         <attr name="star_width" format="dimension" />
-        <!--星星间高度-->
+        <!--星星高度-->
         <attr name="star_height" format="dimension" />
         <!--最大数量-->
         <attr name="star_max" format="integer" />
         <!--选中数量-->
         <attr name="star_rating" format="float" />
         <!--未选中图片-->
-        <attr name="star_hollow" format="reference" />
+        <attr name="star_normal" format="reference" />
         <!--选中图片-->
-        <attr name="star_solid" format="reference" />
+        <attr name="star_selected" format="reference" />
         <!--是否可以滑动改变选中数量-->
-        <attr name="star_isIndicator" format="boolean" />
+        <attr name="star_select_method" format="enum">
+            <enum name="star_prohibited_operation" value="0" />
+            <enum name="star_click_operation" value="1" />
+            <enum name="star_sliding_operation" value="2" />
+        </attr>
         <!--排列方向-->
         <attr name="star_orientation" format="enum">
-            <enum name="vertical" value="1" />
-            <enum name="horizontal" value="0" />
+            <enum name="star_vertical" value="1" />
+            <enum name="star_horizontal" value="0" />
         </attr>
     </declare-styleable>
 </resources>
