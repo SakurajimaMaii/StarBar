@@ -5,7 +5,7 @@
 该项目开发参考GHdeng/StarBarExample项目,原项目地址[GHdeng/StarBarExample](https://github.com/GHdeng/StarBarExample)
 
 ![current version](https://jitpack.io/v/SakurajimaMaii/GStarBar.svg) 
-![jdk version](https://img.shields.io/badge/jdk%20version-11-brightgreen)
+![jdk version](https://img.shields.io/badge/jdk%20version-8-brightgreen)
 
 在开发电商项目中经常都会遇到一些星级评分控件的需求，有需求就必然有开发。废话不多说，没图没真相，上图：
 ![image](https://raw.githubusercontent.com/GHdeng/StarBarExample/master/resources/StarBarExample.gif)
