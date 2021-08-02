@@ -7,7 +7,6 @@ package com.gcode.gstarbar
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
@@ -15,8 +14,6 @@ import android.view.View
 import kotlin.jvm.Throws
 import kotlin.math.max
 import android.graphics.Bitmap
-
-import android.graphics.PixelFormat
 
 
 /**
@@ -142,16 +139,16 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星选中数量
      * @param starRating Float
-     * @throws GStarRatingNumberException
+     * @throws GStarNumberException
      */
-    @Throws(GStarRatingNumberException::class)
+    @Throws(GStarNumberException::class)
     fun setStarRating(starRating: Float){
         when {
             starRating<1f -> {
-                throw GStarRatingNumberException("The least number of stars selected is one")
+                throw GStarNumberException("The least number of stars selected is one")
             }
             starRating.toInt()>starMaxNumber -> {
-                throw GStarRatingNumberException("The number of selected stars exceeds the maximum number limit")
+                throw GStarNumberException("The number of selected stars exceeds the maximum number limit")
             }
             else -> {
                 this.starRating = starRating
@@ -233,8 +230,13 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星数量
      * @param starMaxNumber Int
+     * @throws GStarNumberException
      */
+    @Throws(GStarNumberException::class)
     fun setStarMaxNumber(starMaxNumber: Int) {
+        if(starMaxNumber<0){
+            throw GStarNumberException("The maximum number of stars should not be negative")
+        }
         this.starMaxNumber = starMaxNumber
         invalidate()
     }
