@@ -1,10 +1,9 @@
-package com.caption.starbarexample
+package com.gcode.starbarproj
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.gcode.gstarbar.GStarBarView
-import com.gcode.gstarbar.GStarRatingNumberException
 
 class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

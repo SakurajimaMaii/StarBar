@@ -1,4 +1,4 @@
-package com.caption.starbarexample;
+package com.gcode.starbarproj;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.caption.starbarexample;
+package com.gcode.starbarproj;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
