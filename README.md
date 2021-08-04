@@ -11,7 +11,7 @@
 
 ## 项目效果图
 
-![image](https://raw.githubusercontent.com/GHdeng/StarBarExample/master/resources/StarBarExample.gif)
+<img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="图片名称" align=center />
 
 ## 如何使用
 
