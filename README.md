@@ -1,4 +1,4 @@
-# GStarBar
+# StarBar
 
 ## 前言
 
@@ -6,7 +6,7 @@
 
 ## 项目最新版本以及对应的jdk 版本
 
-![current version](https://jitpack.io/v/SakurajimaMaii/GStarBar.svg) 
+![current version](https://jitpack.io/v/SakurajimaMaii/StarBar.svg) 
 ![jdk version](https://img.shields.io/badge/jdk%20version-11-%23c0392b)
 
 ## 项目效果图
@@ -28,7 +28,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.SakurajimaMaii:GStarBar:dev-1.1.0'
+    implementation 'com.github.SakurajimaMaii:StarBar:dev-2.0.0'
 }
 ```
 
@@ -61,10 +61,10 @@ mStarbar.apply {
     setStarMaxNumber(5)
     setStarBitMapSize(40,40)
     setStarSpaceWidth(20)
-    setStarSelectMethod(GStarSelectMethod.SlidingOperation)
+    setStarSelectMethod(StarBarSelectMethod.SlidingOperation)
     try {
         setStarRating(3.6f)
-    }catch (e: GStarException){
+    }catch (e: StarBarException){
         e.printStackTrace()
     }
 }
