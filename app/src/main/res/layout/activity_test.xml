@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.gcode.gstarbar.GStarBarView
+    <com.gcode.widget.GStarBarView
         android:id="@+id/sbv_starbar_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,28 +27,37 @@
         app:star_select_method="star_sliding_operation"
         app:star_max="5"
         app:star_orientation="star_horizontal"
-        app:star_rating="2"
+        app:star_rating="2.5"
         app:star_selected="@mipmap/ic_star_yellow_selected"
         app:star_width="25dp"
-        android:layout_marginTop="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <com.gcode.gstarbar.GStarBarView
+        android:layout_marginTop="66dp" />
+    <com.gcode.widget.GStarBarView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:star_space_width="1dp"
-        app:star_height="25dp"
+        app:star_height="40dp"
         app:star_normal="@mipmap/ic_star_yellow_normal"
         app:star_select_method="star_click_operation"
+        app:star_max="5"
+        app:star_orientation="star_horizontal"
+        app:star_rating="2.5"
+        app:star_selected="@mipmap/ic_star_yellow_selected"
+        app:star_width="40dp"
+        android:layout_marginTop="66dp" />
+
+    <com.gcode.widget.GStarBarView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:star_space_width="1dp"
+        app:star_height="40dp"
+        app:star_normal="@mipmap/ic_star_yellow_normal"
+        app:star_select_method="star_sliding_operation"
         app:star_max="5"
         app:star_orientation="star_vertical"
         app:star_rating="2"
         app:star_selected="@mipmap/ic_star_yellow_selected"
-        app:star_width="25dp"
+        app:star_width="40dp"
         android:layout_marginTop="61dp"
-        android:id="@+id/starBarView"
-        android:layout_below="@+id/sbv_starbar_2"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/starBarView" />
 
 </LinearLayout>

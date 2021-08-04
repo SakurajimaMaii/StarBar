@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.gcode.gstarbar.GStarBarView;
-import com.gcode.gstarbar.GStarBitmapSizeException;
+import com.gcode.widget.GStarBarView;
+import com.gcode.widget.GStarIllegalParamException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             mStarbar.setStarBitMapSize(40,40);
-        } catch (GStarBitmapSizeException e) {
+        } catch (GStarIllegalParamException e) {
             e.printStackTrace();
         }
 

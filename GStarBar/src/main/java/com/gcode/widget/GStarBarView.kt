@@ -1,4 +1,4 @@
-package com.gcode.gstarbar
+package com.gcode.widget
 
 /**
  *作者:created by HP on 2021/7/24 19:19
@@ -11,9 +11,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import kotlin.jvm.Throws
+import com.gcode.gstarbar.R
 import kotlin.math.max
-import android.graphics.Bitmap
 
 
 /**
@@ -59,16 +58,18 @@ class GStarBarView @JvmOverloads constructor(
     //参考链接 https://blog.csdn.net/u011228356/article/details/44620263
     private val density = context.resources.displayMetrics.density
 
+    @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         //绘制实心进度
         val solidStarNum = starRating.toInt()
         //绘制实心的起点位置
         var solidStartPoint = 0
-        when(starOrientation){
-            HORIZONTAL-> for (i in 1..solidStarNum) {
+        when (starOrientation) {
+            HORIZONTAL -> for (i in 1..solidStarNum) {
                 canvas.drawBitmap(starSelectedBitmap, solidStartPoint.toFloat(), 0f, paint)
                 solidStartPoint += starSpaceWidth + starSelectedBitmap.width
             }
+
             VERTICAL-> for (i in 1..solidStarNum) {
                 canvas.drawBitmap(starSelectedBitmap, 0f, solidStartPoint.toFloat(), paint)
                 solidStartPoint += starSpaceWidth + starSelectedBitmap.height
@@ -76,14 +77,43 @@ class GStarBarView @JvmOverloads constructor(
         }
         //虚心开始位置
         var hollowStartPoint = solidStartPoint
-        when(starOrientation){
-            HORIZONTAL-> for (i in 1..(starMaxNumber-solidStarNum)) {
+        //多出的实心部分起点
+        val extraSolidStarPoint = hollowStartPoint
+        //虚心数量
+        val hollowStarNum = starMaxNumber - solidStarNum
+        when (starOrientation){
+            HORIZONTAL-> for (j in 1..hollowStarNum) {
                 canvas.drawBitmap(starNormalBitmap, hollowStartPoint.toFloat(), 0f, paint)
                 hollowStartPoint += starSpaceWidth + starNormalBitmap.width
             }
-            VERTICAL-> for (i in 1..(starMaxNumber-solidStarNum)) {
-                canvas.drawBitmap(starNormalBitmap, 0f, hollowStartPoint.toFloat(), paint)
-                hollowStartPoint += starSpaceWidth + starNormalBitmap.width
+                VERTICAL-> for (j in 1..hollowStarNum) {
+                    canvas.drawBitmap(starNormalBitmap, 0f, hollowStartPoint.toFloat(), paint)
+                    hollowStartPoint += starSpaceWidth + starNormalBitmap.width
+                }
+            }
+        //多出的实心长度
+        when(starOrientation){
+            HORIZONTAL->{
+                val extraSolidLength = ((starRating - solidStarNum) * starNormalBitmap.width).toInt()
+                val rectSrc = Rect(0, 0, extraSolidLength, starNormalBitmap.height)
+                val dstF = Rect(
+                    extraSolidStarPoint,
+                    0,
+                    extraSolidStarPoint + extraSolidLength,
+                    starNormalBitmap.height
+                )
+                canvas.drawBitmap(starSelectedBitmap, rectSrc, dstF, paint)
+            }
+            VERTICAL->{
+                val extraSolidLength = ((starRating - solidStarNum) * starNormalBitmap.height).toInt()
+                val rectSrc = Rect(0, 0, starNormalBitmap.width, extraSolidLength)
+                val dstF = Rect(
+                    0,
+                    extraSolidStarPoint,
+                    starNormalBitmap.width,
+                    extraSolidStarPoint + extraSolidLength
+                )
+                canvas.drawBitmap(starSelectedBitmap, rectSrc, dstF, paint)
             }
         }
     }
@@ -100,15 +130,14 @@ class GStarBarView @JvmOverloads constructor(
                     if (starOrientation == HORIZONTAL) {
                         val totalWidth = (starMaxNumber * (starWidth + starSpaceWidth)).toFloat()
                         if (event.x <= totalWidth) {
-                            val newStarRating = (event.x.toInt() / (starWidth + starSpaceWidth) + 1).toFloat()
-                            Log.d(viewTag,"选中的星星控件数量$newStarRating")
+                            val newStarRating =
+                                (event.x.toInt() / (starHeight + starSpaceWidth) + 1).toFloat()
                             setStarRating(newStarRating)
                         }
                     } else {
                         val totalHeight = (starMaxNumber * (starHeight + starSpaceWidth)).toFloat()
                         if (event.y <= totalHeight) {
                             val newStarRating = (event.y.toInt() / (starHeight + starSpaceWidth) + 1).toFloat()
-                            Log.d(viewTag,"选中的星星控件数量$newStarRating")
                             setStarRating(newStarRating)
                         }
                     }
@@ -119,15 +148,20 @@ class GStarBarView @JvmOverloads constructor(
                 if (starOrientation == HORIZONTAL) {
                     val totalWidth = (starMaxNumber * (starWidth + starSpaceWidth)).toFloat()
                     if (event.x <= totalWidth) {
-                        val newStarRating = (event.x.toInt() / (starWidth + starSpaceWidth)+1).toFloat()
+                        val newStarRating = event.x / (starWidth + starSpaceWidth) + 1
                         //保证至少选择一颗星星
+                        Log.d(
+                            viewTag,
+                            "${starOrientation}选中的x横坐标${event.x},星星宽度加间隔${starWidth + starSpaceWidth},选中的星星控件数量$newStarRating"
+                        )
                         setStarRating(max(newStarRating,1f))
                     }
                 } else {
                     val totalHeight = (starMaxNumber * (starHeight + starSpaceWidth)).toFloat()
                     if (event.y <= totalHeight) {
-                        val newStarRating = (event.y.toInt() / (starHeight + starSpaceWidth)+1).toFloat()
-                        setStarRating(max(newStarRating,1f))
+                        val newStarRating = event.y / (starHeight + starSpaceWidth) + 1
+                        Log.d(viewTag, "选中的星星控件数量$newStarRating")
+                        setStarRating(max(newStarRating, 1f))
                     }
                 }
                 return true
@@ -139,16 +173,16 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星选中数量
      * @param starRating Float
-     * @throws GStarNumberException
+     * @throws GStarIllegalParamException
      */
-    @Throws(GStarNumberException::class)
+    @Throws(GStarIllegalParamException::class)
     fun setStarRating(starRating: Float){
         when {
             starRating<1f -> {
-                throw GStarNumberException("The least number of stars selected is one")
+                throw GStarIllegalParamException("The least number of stars selected is one")
             }
             starRating.toInt()>starMaxNumber -> {
-                throw GStarNumberException("The number of selected stars exceeds the maximum number limit")
+                throw GStarIllegalParamException("The number of selected stars exceeds the maximum number limit")
             }
             else -> {
                 this.starRating = starRating
@@ -186,12 +220,12 @@ class GStarBarView @JvmOverloads constructor(
      * 设置想要的星星尺寸 注意这里的单位是dp
      * @param starWidth Int
      * @param starHeight Int
-     * @throws GStarBitmapSizeException
+     * @throws GStarIllegalParamException
      */
-    @Throws(GStarBitmapSizeException::class)
+    @Throws(GStarIllegalParamException::class)
     fun setStarBitMapSize(starWidth:Int,starHeight:Int){
         if(starWidth<0||starHeight<0){
-            throw GStarBitmapSizeException("There is a problem with the set length and width values")
+            throw GStarIllegalParamException("There is a problem with the set length and width values")
         }
         //将int转换为对应的dp
         this.starWidth = (starWidth*density).toInt()
@@ -205,17 +239,30 @@ class GStarBarView @JvmOverloads constructor(
      * 获取星星尺寸 注意这里获取到的数值单位是dp
      * @return starSize
      */
-    fun getStarBitMapSize() = StarSize((starWidth/density).toInt(),(starHeight/density).toInt())
+    fun getStarBitMapSize() =
+        StarSize((starWidth / density).toInt(), (starHeight / density).toInt())
+
+    /**
+     * 获取星星图片的宽度 单位dp
+     * @return Int
+     */
+    fun getStarBitMapWidth() = (starWidth / density).toInt()
+
+    /**
+     * 获取星星图片的高度 单位dp
+     * @return Int
+     */
+    fun getStarBitMapHeight() = (starWidth / density).toInt()
 
     /**
      * 设置星星之间的间距 单位是dp
      * @param starSpaceWidth Int
-     * @throws GStarBitmapSizeException
+     * @throws GStarIllegalParamException
      */
-    @Throws(GStarBitmapSizeException::class)
-    fun setStarSpaceWidth(starSpaceWidth:Int){
-        if(starSpaceWidth<0){
-            throw GStarBitmapSizeException("The star spacing setting must be a non-negative number")
+    @Throws(GStarIllegalParamException::class)
+    fun setStarSpaceWidth(starSpaceWidth: Int) {
+        if (starSpaceWidth < 0) {
+            throw GStarIllegalParamException("The star spacing setting must be a non-negative number")
         }
         this.starSpaceWidth = (starSpaceWidth*density).toInt()
         invalidate()
@@ -230,12 +277,12 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星数量
      * @param starMaxNumber Int
-     * @throws GStarNumberException
+     * @throws GStarIllegalParamException
      */
-    @Throws(GStarNumberException::class)
+    @Throws(GStarIllegalParamException::class)
     fun setStarMaxNumber(starMaxNumber: Int) {
         if(starMaxNumber<0){
-            throw GStarNumberException("The maximum number of stars should not be negative")
+            throw GStarIllegalParamException("The maximum number of stars should not be negative")
         }
         this.starMaxNumber = starMaxNumber
         invalidate()
@@ -322,8 +369,14 @@ class GStarBarView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         when (starOrientation) {
             //判断是横向还是纵向，测量长度
-            HORIZONTAL->setMeasuredDimension(measureLong(widthMeasureSpec), measureShort(heightMeasureSpec))
-            VERTICAL->setMeasuredDimension(measureShort(widthMeasureSpec), measureLong(heightMeasureSpec))
+            HORIZONTAL -> setMeasuredDimension(
+                measureLong(widthMeasureSpec),
+                measureShort(heightMeasureSpec)
+            )
+            VERTICAL -> setMeasuredDimension(
+                measureShort(widthMeasureSpec),
+                measureLong(heightMeasureSpec)
+            )
         }
     }
 
@@ -365,13 +418,23 @@ class GStarBarView @JvmOverloads constructor(
         starMaxNumber = a.getInt(R.styleable.GStarBarView_star_max, 0)
         starRating = a.getFloat(R.styleable.GStarBarView_star_rating, 0f)
         //这里防止设定的资源解析失败而返回null,故给了一个默认值
-        starSelectedBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_selected, 0))==null){
-            getZoomBitmap(BitmapFactory.decodeResource(context.resources,R.mipmap.ic_star_yellow_selected))
+        starSelectedBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_selected, 0))==null) {
+            getZoomBitmap(
+                BitmapFactory.decodeResource(
+                    context.resources,
+                    R.mipmap.ic_star_yellow_selected
+                )
+            )
         }else{
             getZoomBitmap(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_selected, 0)))
         }
-        starNormalBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_normal, 0))==null){
-            getZoomBitmap(BitmapFactory.decodeResource(context.resources,R.mipmap.ic_star_yellow_normal))
+        starNormalBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_normal, 0))==null) {
+            getZoomBitmap(
+                BitmapFactory.decodeResource(
+                    context.resources,
+                    R.mipmap.ic_star_yellow_normal
+                )
+            )
         }else{
             getZoomBitmap(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_normal, 0)))
         }

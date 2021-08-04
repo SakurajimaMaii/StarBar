@@ -27,4 +27,20 @@
             <enum name="star_horizontal" value="0" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="StarsView">
+        <!-- 星星的颜色 -->
+        <attr name="stv_color" format="color" />
+        <!-- 星星的边数 -->
+        <attr name="stv_num" format="integer|dimension|reference" />
+        <!-- 边的线宽 -->
+        <attr name="stv_edge_line_width" format="float|dimension|reference" />
+        <!-- 填充风格 -->
+        <attr name="stv_style" format="enum">
+            <!-- 填满 -->
+            <enum name="fill" value="1" />
+            <!-- 描边 -->
+            <enum name="stroke" value="2" />
+        </attr>
+    </declare-styleable>
 </resources>

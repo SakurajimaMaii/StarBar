@@ -1,4 +1,4 @@
-package com.gcode.gstarbar
+package com.gcode.widget
 
 /**
  *作者:created by HP on 2021/8/1 17:17

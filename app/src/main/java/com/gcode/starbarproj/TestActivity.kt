@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.gcode.gstarbar.GStarBarView
-import com.gcode.gstarbar.GStarException
-import com.gcode.gstarbar.GStarSelectMethod
+import com.gcode.widget.GStarBarView
+import com.gcode.widget.GStarException
+import com.gcode.widget.GStarSelectMethod
 
 class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +23,12 @@ class TestActivity : AppCompatActivity() {
             setStarSelectedBitmap(R.drawable.ic_star_dark_blue_selected)
             setStarNormalBitmap(R.drawable.ic_star_dark_blue_normal)
             setStarMaxNumber(5)
-            setStarBitMapSize(50,60)
+            setStarBitMapSize(40,40)
             setStarSpaceWidth(20)
-            setStarSelectMethod(GStarSelectMethod.ProhibitedOperation)
+            setStarSelectMethod(GStarSelectMethod.SlidingOperation)
             try {
-                setStarRating(-3f)
-            }catch (e:GStarException){
+                setStarRating(3.6f)
+            }catch (e: GStarException){
                 e.printStackTrace()
             }
         }
