@@ -1,7 +1,7 @@
 package com.gcode.widget
 
 /**
- *作者:created by HP on 2021/7/24 19:19
+ *作者:created by SakurajimaMaii on 2021/7/24 19:19
  *邮箱:sakurajimamai2020@qq.com
  */
 import android.annotation.SuppressLint
@@ -20,8 +20,8 @@ import kotlin.math.max
  * Created by CaptionDeng on 2016/8/30.
  */
 //@JvmOverloads constructor意在解决在java文件中调用GStarBar产生
-//java.lang.NoSuchMethodException: com.gcode.gstarbar.GStarBarView.<init>的错误
-class GStarBarView @JvmOverloads constructor(
+//java.lang.NoSuchMethodException: com.gcode.widget.StarBarView.<init>的错误
+class StarBarView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     defStyle: Int = 0
@@ -34,7 +34,7 @@ class GStarBarView @JvmOverloads constructor(
         //星星垂直排列
         const val VERTICAL = 1
 
-        const val viewTag = "GStarBarView"
+        const val viewTag = "StarBarView"
     }
 
     data class StarSize(val width:Int,val height:Int)
@@ -122,10 +122,10 @@ class GStarBarView @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when(starSelectMethod){
             //无法进行操作
-            GStarSelectMethod.ProhibitedOperation.value->{
+            StarBarSelectMethod.ProhibitedOperation.value->{
                 return super.onTouchEvent(event)
             }
-            GStarSelectMethod.ClickOperation.value->{
+            StarBarSelectMethod.ClickOperation.value->{
                 if(event.action == MotionEvent.ACTION_DOWN){
                     if (starOrientation == HORIZONTAL) {
                         val totalWidth = (starMaxNumber * (starWidth + starSpaceWidth)).toFloat()
@@ -144,7 +144,7 @@ class GStarBarView @JvmOverloads constructor(
                 }
                 return super.onTouchEvent(event)
             }
-            GStarSelectMethod.SlidingOperation.value->{
+            StarBarSelectMethod.SlidingOperation.value->{
                 if (starOrientation == HORIZONTAL) {
                     val totalWidth = (starMaxNumber * (starWidth + starSpaceWidth)).toFloat()
                     if (event.x <= totalWidth) {
@@ -173,16 +173,16 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星选中数量
      * @param starRating Float
-     * @throws GStarIllegalParamException
+     * @throws StarBarIllegalParamException
      */
-    @Throws(GStarIllegalParamException::class)
+    @Throws(StarBarIllegalParamException::class)
     fun setStarRating(starRating: Float){
         when {
             starRating<1f -> {
-                throw GStarIllegalParamException("The least number of stars selected is one")
+                throw StarBarIllegalParamException("The least number of stars selected is one")
             }
             starRating.toInt()>starMaxNumber -> {
-                throw GStarIllegalParamException("The number of selected stars exceeds the maximum number limit")
+                throw StarBarIllegalParamException("The number of selected stars exceeds the maximum number limit")
             }
             else -> {
                 this.starRating = starRating
@@ -199,10 +199,10 @@ class GStarBarView @JvmOverloads constructor(
 
     /**
      * 设置星星选中方式
-     * @param method GStarSelectMethod
+     * @param methodBar StarBarSelectMethod
      */
-    fun setStarSelectMethod(method: GStarSelectMethod){
-        this.starSelectMethod = method.value
+    fun setStarSelectMethod(methodBar: StarBarSelectMethod){
+        this.starSelectMethod = methodBar.value
     }
 
     /**
@@ -210,9 +210,9 @@ class GStarBarView @JvmOverloads constructor(
      * @return String
      */
     fun getStarSelectMethod() = when(starSelectMethod){
-        GStarSelectMethod.ProhibitedOperation.value->"ProhibitedOperation"
-        GStarSelectMethod.ClickOperation.value->"ClickOperation"
-        GStarSelectMethod.SlidingOperation.value->"SlidingOperation"
+        StarBarSelectMethod.ProhibitedOperation.value->"ProhibitedOperation"
+        StarBarSelectMethod.ClickOperation.value->"ClickOperation"
+        StarBarSelectMethod.SlidingOperation.value->"SlidingOperation"
         else->""
     }
 
@@ -220,12 +220,12 @@ class GStarBarView @JvmOverloads constructor(
      * 设置想要的星星尺寸 注意这里的单位是dp
      * @param starWidth Int
      * @param starHeight Int
-     * @throws GStarIllegalParamException
+     * @throws StarBarIllegalParamException
      */
-    @Throws(GStarIllegalParamException::class)
+    @Throws(StarBarIllegalParamException::class)
     fun setStarBitMapSize(starWidth:Int,starHeight:Int){
         if(starWidth<0||starHeight<0){
-            throw GStarIllegalParamException("There is a problem with the set length and width values")
+            throw StarBarIllegalParamException("There is a problem with the set length and width values")
         }
         //将int转换为对应的dp
         this.starWidth = (starWidth*density).toInt()
@@ -257,12 +257,12 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星之间的间距 单位是dp
      * @param starSpaceWidth Int
-     * @throws GStarIllegalParamException
+     * @throws StarBarIllegalParamException
      */
-    @Throws(GStarIllegalParamException::class)
+    @Throws(StarBarIllegalParamException::class)
     fun setStarSpaceWidth(starSpaceWidth: Int) {
         if (starSpaceWidth < 0) {
-            throw GStarIllegalParamException("The star spacing setting must be a non-negative number")
+            throw StarBarIllegalParamException("The star spacing setting must be a non-negative number")
         }
         this.starSpaceWidth = (starSpaceWidth*density).toInt()
         invalidate()
@@ -277,12 +277,12 @@ class GStarBarView @JvmOverloads constructor(
     /**
      * 设置星星数量
      * @param starMaxNumber Int
-     * @throws GStarIllegalParamException
+     * @throws StarBarIllegalParamException
      */
-    @Throws(GStarIllegalParamException::class)
+    @Throws(StarBarIllegalParamException::class)
     fun setStarMaxNumber(starMaxNumber: Int) {
         if(starMaxNumber<0){
-            throw GStarIllegalParamException("The maximum number of stars should not be negative")
+            throw StarBarIllegalParamException("The maximum number of stars should not be negative")
         }
         this.starMaxNumber = starMaxNumber
         invalidate()
@@ -306,10 +306,10 @@ class GStarBarView @JvmOverloads constructor(
      * Drawable资源id来设置星星选中图片
      * @param drawableId Int
      */
-    @Throws(GStarBitmapException::class)
+    @Throws(StarBarBitmapException::class)
     fun setStarSelectedBitmap(drawableId: Int){
         if(BitmapFactory.decodeResource(context.resources, drawableId)==null){
-            throw GStarBitmapException("Drawable resource conversion BitMap failed")
+            throw StarBarBitmapException("Drawable resource conversion BitMap failed")
         }else{
             starSelectedBitmap = getZoomBitmap(BitmapFactory.decodeResource(context.resources, drawableId))
         }
@@ -333,10 +333,10 @@ class GStarBarView @JvmOverloads constructor(
      * Drawable资源id来设置星星为选中图片
      * @param drawableId Int
      */
-    @Throws(GStarBitmapException::class)
+    @Throws(StarBarBitmapException::class)
     fun setStarNormalBitmap(drawableId: Int){
         if(BitmapFactory.decodeResource(context.resources, drawableId)==null){
-            throw GStarBitmapException("Drawable resource conversion BitMap failed")
+            throw StarBarBitmapException("Drawable resource conversion BitMap failed")
         }else{
             starNormalBitmap = getZoomBitmap(BitmapFactory.decodeResource(context.resources, drawableId))
         }

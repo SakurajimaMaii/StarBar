@@ -9,18 +9,18 @@ package com.gcode.widget
  * @property message String?
  * @constructor
  */
-open class GStarException(override val message: String?):Throwable()
+open class StarBarException(override val message: String?):Throwable()
 
 /**
  * 非法参数异常
  * @property message String?
  * @constructor
  */
-class GStarIllegalParamException(override val message: String?): GStarException(message)
+class StarBarIllegalParamException(override val message: String?): StarBarException(message)
 
 /**
  * 星星图片错误
  * @property message String?
  * @constructor
  */
-class GStarBitmapException(override val message: String?): GStarException(message)
+class StarBarBitmapException(override val message: String?): StarBarException(message)

@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/GStarBarSampleDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/GStarBarSampleDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GStarBar/GStarBarSampleDemo.GStarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/GStarBar/GStarBarSampleDemo.GStarBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GStarBar/GStarBarSampleDemo.StarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/GStarBar/GStarBarSampleDemo.StarBar.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GStarBarSampleDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GStarBarSampleDemo.app.iml" />
     </modules>
   </component>

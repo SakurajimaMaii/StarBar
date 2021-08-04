@@ -35,7 +35,7 @@ dependencies {
 ### 2. xml布局
 
 ```xml
-<com.gcode.widget.GStarBarView
+<com.gcode.widget.StarBarView
     android:id="@+id/sbv_starbar_2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
