@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.SakurajimaMaii:GStarBar:dev-1.1.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/73547978510852a0acaf04bc9bf9a91f/transformed/jetified-GStarBar-dev-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/73547978510852a0acaf04bc9bf9a91f/transformed/jetified-GStarBar-dev-1.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/73547978510852a0acaf04bc9bf9a91f/transformed/jetified-GStarBar-dev-1.1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.SakurajimaMaii/GStarBar/dev-1.1.0/190e838c50dd483b0050bb483faa2a534064d84b/GStarBar-dev-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

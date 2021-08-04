@@ -11,12 +11,6 @@
     android:orientation="vertical"
     tools:context="com.gcode.starbarproj.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_1"
-        android:text="11111"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <com.gcode.widget.GStarBarView
         android:id="@+id/sbv_starbar_2"
         android:layout_width="wrap_content"
@@ -31,6 +25,7 @@
         app:star_selected="@mipmap/ic_star_yellow_selected"
         app:star_width="25dp"
         android:layout_marginTop="66dp" />
+
     <com.gcode.widget.GStarBarView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
