@@ -28,7 +28,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.SakurajimaMaii:StarBar:dev-2.0.0'
+    'com.github.SakurajimaMaii:StarBar:dev-2.1.0'
 }
 ```
 
