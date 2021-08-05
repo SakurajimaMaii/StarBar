@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 
-    <com.gcode.widget.StarBarView
+    <com.gcode.widget.StarBar
         android:id="@+id/sbv_starbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,20 +36,5 @@
         app:star_selected="@mipmap/ic_star_yellow_selected"
         app:star_space_width="1dp"
         app:star_width="25dp" />
-
-    <com.gcode.widget.StarBarView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:star_space_width="1dp"
-        app:star_height="40dp"
-        app:star_normal="@mipmap/ic_star_yellow_normal"
-        app:star_select_method="star_click_operation"
-        app:star_max="5"
-        app:star_orientation="star_vertical"
-        app:star_rating="2"
-        app:star_selected="@mipmap/ic_star_yellow_selected"
-        app:star_width="40dp"
-        android:layout_marginTop="61dp"
-        android:id="@+id/starBarView" />
 
 </LinearLayout>
