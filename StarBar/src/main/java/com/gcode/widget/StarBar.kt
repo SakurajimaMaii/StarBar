@@ -21,7 +21,7 @@ import kotlin.math.max
  */
 //@JvmOverloads constructor意在解决在java文件中调用GStarBar产生
 //java.lang.NoSuchMethodException: com.gcode.widget.StarBarView.<init>的错误
-class StarBarView @JvmOverloads constructor(
+class StarBar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet?,
     defStyle: Int = 0
@@ -411,14 +411,14 @@ class StarBarView @JvmOverloads constructor(
     }
 
     init {
-        val a = context.obtainStyledAttributes(attrs, R.styleable.GStarBarView, defStyle, 0)
-        starSpaceWidth = a.getDimensionPixelSize(R.styleable.GStarBarView_star_space_width, 0)
-        starWidth = a.getDimensionPixelSize(R.styleable.GStarBarView_star_width, 0)
-        starHeight = a.getDimensionPixelSize(R.styleable.GStarBarView_star_height, 0)
-        starMaxNumber = a.getInt(R.styleable.GStarBarView_star_max, 0)
-        starRating = a.getFloat(R.styleable.GStarBarView_star_rating, 0f)
+        val a = context.obtainStyledAttributes(attrs, R.styleable.StarBar, defStyle, 0)
+        starSpaceWidth = a.getDimensionPixelSize(R.styleable.StarBar_star_space_width, 0)
+        starWidth = a.getDimensionPixelSize(R.styleable.StarBar_star_width, 0)
+        starHeight = a.getDimensionPixelSize(R.styleable.StarBar_star_height, 0)
+        starMaxNumber = a.getInt(R.styleable.StarBar_star_max, 0)
+        starRating = a.getFloat(R.styleable.StarBar_star_rating, 0f)
         //这里防止设定的资源解析失败而返回null,故给了一个默认值
-        starSelectedBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_selected, 0))==null) {
+        starSelectedBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.StarBar_star_selected, 0))==null) {
             getZoomBitmap(
                 BitmapFactory.decodeResource(
                     context.resources,
@@ -426,9 +426,9 @@ class StarBarView @JvmOverloads constructor(
                 )
             )
         }else{
-            getZoomBitmap(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_selected, 0)))
+            getZoomBitmap(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.StarBar_star_selected, 0)))
         }
-        starNormalBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_normal, 0))==null) {
+        starNormalBitmap = if(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.StarBar_star_normal, 0))==null) {
             getZoomBitmap(
                 BitmapFactory.decodeResource(
                     context.resources,
@@ -436,10 +436,10 @@ class StarBarView @JvmOverloads constructor(
                 )
             )
         }else{
-            getZoomBitmap(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.GStarBarView_star_normal, 0)))
+            getZoomBitmap(BitmapFactory.decodeResource(context.resources, a.getResourceId(R.styleable.StarBar_star_normal, 0)))
         }
-        starOrientation = a.getInt(R.styleable.GStarBarView_star_orientation, HORIZONTAL)
-        starSelectMethod = a.getInt(R.styleable.GStarBarView_star_select_method,0)
+        starOrientation = a.getInt(R.styleable.StarBar_star_orientation, HORIZONTAL)
+        starSelectMethod = a.getInt(R.styleable.StarBar_star_select_method,0)
         a.recycle()
     }
 }

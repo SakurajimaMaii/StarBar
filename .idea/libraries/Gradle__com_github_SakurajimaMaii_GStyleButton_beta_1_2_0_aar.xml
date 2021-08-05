@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.SakurajimaMaii:GStyleButton:beta-1.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/34ebf3b55fba64ab1eac75b654cdafda/transformed/jetified-GStyleButton-beta-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/34ebf3b55fba64ab1eac75b654cdafda/transformed/jetified-GStyleButton-beta-1.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/34ebf3b55fba64ab1eac75b654cdafda/transformed/jetified-GStyleButton-beta-1.2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.SakurajimaMaii/GStyleButton/beta-1.2.0/f42b300ab36cae9fe47e6ff6583beafac1cbbbb3/GStyleButton-beta-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

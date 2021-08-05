@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.gcode.widget.GStarBarView;
-import com.gcode.widget.GStarIllegalParamException;
+import com.gcode.widget.StarBar;
+import com.gcode.widget.StarBarIllegalParamException;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GStarBarView mStarbar = (GStarBarView) findViewById(R.id.sbv_starbar);
+        StarBar mStarbar = (StarBar) findViewById(R.id.sbv_starbar);
 
         Button button = (Button) findViewById(R.id.button_2);
 
@@ -31,10 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             mStarbar.setStarBitMapSize(40,40);
-        } catch (GStarIllegalParamException e) {
+        } catch (StarBarIllegalParamException e) {
             e.printStackTrace();
         }
-
-        GStarBarView.StarSize size = mStarbar.getStarBitMapSize();
     }
 }

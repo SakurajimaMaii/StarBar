@@ -24,8 +24,9 @@ android {
 }
 
 dependencies {
-    //implementation project(":GStarBar")
-    implementation 'com.github.SakurajimaMaii:GStarBar:dev-1.1.0'
+    implementation project(":StarBar")
+    //implementation 'com.github.SakurajimaMaii:StarBar:dev-2.0.0'
+    implementation 'com.github.SakurajimaMaii:GStyleButton:beta-1.2.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'junit:junit:4.13.2'

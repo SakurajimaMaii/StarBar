@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.gcode.widget.GStarBarView
-import com.gcode.widget.GStarException
-import com.gcode.widget.GStarSelectMethod
+import com.gcode.widget.StarBarException
+import com.gcode.widget.StarBarSelectMethod
+import com.gcode.widget.StarBar
 
 class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
 
-        val mStarbar = findViewById<View>(R.id.sbv_starbar_2) as GStarBarView
+        val mStarbar = findViewById<View>(R.id.sbv_starbar_2) as StarBar
 
         //拿到当前星星数量
 
@@ -25,10 +25,10 @@ class TestActivity : AppCompatActivity() {
             setStarMaxNumber(5)
             setStarBitMapSize(40,40)
             setStarSpaceWidth(20)
-            setStarSelectMethod(GStarSelectMethod.SlidingOperation)
+            setStarSelectMethod(StarBarSelectMethod.SlidingOperation)
             try {
                 setStarRating(3.6f)
-            }catch (e: GStarException){
+            }catch (e: StarBarException){
                 e.printStackTrace()
             }
         }
