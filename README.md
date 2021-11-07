@@ -28,14 +28,14 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.SakurajimaMaii:StarBar:dev-2.0.0'
+    'com.github.SakurajimaMaii:StarBar:dev-2.1.0'
 }
 ```
 
 ### 2. xml布局
 
 ```xml
-<com.gcode.widget.StarBarView
+<com.gcode.widget.StarBar
     android:id="@+id/sbv_starbar_2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
