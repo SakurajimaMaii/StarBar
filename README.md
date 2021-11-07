@@ -1,21 +1,14 @@
 # StarBar
 
-## 前言
-
-> 该项目开发参考GHdeng/StarBarExample项目,原项目地址[GHdeng/StarBarExample](https://github.com/GHdeng/StarBarExample)
-
-## 项目最新版本以及对应的jdk 版本
-
-![current version](https://jitpack.io/v/SakurajimaMaii/StarBar.svg) 
-![jdk version](https://img.shields.io/badge/jdk%20version-11-%23c0392b)
-
-## 项目效果图
+## Project renderings
 
 <img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="图片名称" align=center />
 
-## 如何使用
+## How to
 
-### 1. 添加依赖
+### 1. Add gradle
+
+Add it in your root build.gradle at the end of repositories:
 
 ```groovy
 allprojects {
@@ -26,13 +19,15 @@ allprojects {
 }
 ```
 
-```groovy
+Add the dependency
+
+```gradle
 dependencies {
-    'com.github.SakurajimaMaii:StarBar:dev-2.1.0'
+    'com.github.SakurajimaMaii:StarBar:0.0.5'
 }
 ```
 
-### 2. xml布局
+### 2. Set in XML
 
 ```xml
 <com.gcode.widget.StarBar
@@ -51,7 +46,7 @@ dependencies {
     android:layout_marginTop="66dp" />
 ```
 
-### 3. 代码使用
+### Here is a Kotlin way
 
 ```kotlin
 mStarbar.apply {
@@ -70,6 +65,6 @@ mStarbar.apply {
 }
 ```
 
-## 后话
+## Afterword
 
-关于属性一类的或者方法的问题代码里面写的都很详细了,就不再解释了,详情参考源码
+The problem code about attributes or methods is very detailed, so I won't explain it anymore. Please refer to the source code for details.
