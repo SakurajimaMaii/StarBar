@@ -29,12 +29,16 @@
         android:layout_marginTop="66dp"
         app:star_height="25dp"
         app:star_max="5"
-        app:star_normal="@mipmap/ic_star_yellow_normal"
+        app:star_unselected="@mipmap/ic_star_yellow_unselected"
         app:star_orientation="star_horizontal"
         app:star_rating="2"
-        app:star_select_method="star_sliding_operation"
+        app:star_select_method="star_sliding"
         app:star_selected="@mipmap/ic_star_yellow_selected"
-        app:star_space_width="1dp"
+        app:star_interval_width="1dp"
         app:star_width="25dp" />
+
+    <RatingBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

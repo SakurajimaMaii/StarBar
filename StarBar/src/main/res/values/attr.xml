@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="StarBar">
-        <!--设置星星间的间隔-->
-        <attr name="star_space_width" format="dimension" />
-        <!--星星宽度-->
+        <!--Star bitmap interval width-->
+        <attr name="star_interval_width" format="dimension" />
+        <!--Star bitmap width-->
         <attr name="star_width" format="dimension" />
-        <!--星星高度-->
+        <!--Star bitmap height-->
         <attr name="star_height" format="dimension" />
-        <!--最大数量-->
+        <!--Number of star-->
         <attr name="star_max" format="integer" />
-        <!--选中数量-->
+        <!--Star rating-->
         <attr name="star_rating" format="float" />
-        <!--未选中图片-->
-        <attr name="star_normal" format="reference" />
-        <!--选中图片-->
+        <!--Star unselected bitmap-->
+        <attr name="star_unselected" format="reference" />
+        <!--Star selected bitmap-->
         <attr name="star_selected" format="reference" />
-        <!--是否可以滑动改变选中数量-->
+        <!--StarBar select method-->
         <attr name="star_select_method" format="enum">
-            <enum name="star_prohibited_operation" value="0" />
-            <enum name="star_click_operation" value="1" />
-            <enum name="star_sliding_operation" value="2" />
+            <enum name="star_unable" value="0" />
+            <enum name="star_click" value="1" />
+            <enum name="star_sliding" value="2" />
         </attr>
-        <!--排列方向-->
+        <!--Star orientation-->
         <attr name="star_orientation" format="enum">
             <enum name="star_vertical" value="1" />
             <enum name="star_horizontal" value="0" />

@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GStarBarSampleDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/GStarBarSampleDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GStarBar/GStarBarSampleDemo.StarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/GStarBar/GStarBarSampleDemo.StarBar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GStarBarSampleDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GStarBarSampleDemo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBarSampleDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBarSampleDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.main.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.unitTest.iml" />
     </modules>
   </component>
 </project>

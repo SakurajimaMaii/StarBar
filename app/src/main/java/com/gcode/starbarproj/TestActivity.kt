@@ -24,8 +24,8 @@ class TestActivity : AppCompatActivity() {
             setStarNormalBitmap(R.drawable.ic_star_dark_blue_normal)
             setStarMaxNumber(5)
             setStarBitMapSize(40,40)
-            setStarSpaceWidth(20)
-            setStarSelectMethod(StarBarSelectMethod.SlidingOperation)
+            setStarIntervalWidth(20)
+            setStarSelectMethod(StarBarSelectMethod.Sliding)
             try {
                 setStarRating(3.6f)
             }catch (e: StarBarException){
