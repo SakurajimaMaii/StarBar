@@ -60,7 +60,8 @@ class StarBar @JvmOverloads constructor(
      * Star select method
      * @see [StarBarSelectMethod.Click] [StarBarSelectMethod.Sliding] [StarBarSelectMethod.Unable]
      */
-    private var starSelectMethod: Int
+    var starSelectMethod: Int
+        private set
 
     /**
      * Star orientation
@@ -111,10 +112,10 @@ class StarBar @JvmOverloads constructor(
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (starSelectMethod) {
-            StarBarSelectMethod.Unable.value -> {
+            StarBarSelectMethod.Unable -> {
                 return super.onTouchEvent(event)
             }
-            StarBarSelectMethod.Click.value -> {
+            StarBarSelectMethod.Click -> {
                 if (event.action == MotionEvent.ACTION_DOWN) {
                     if (starOrientation == HORIZONTAL) {
                         val totalWidth = (starMaxNumber * (starWidth + starIntervalWidth)).toFloat()
@@ -136,7 +137,7 @@ class StarBar @JvmOverloads constructor(
                 performClick()
                 return super.onTouchEvent(event)
             }
-            StarBarSelectMethod.Sliding.value -> {
+            StarBarSelectMethod.Sliding -> {
                 if (starOrientation == HORIZONTAL) {
                     val totalWidth = (starMaxNumber * (starWidth + starIntervalWidth)).toFloat()
                     if (event.x <= totalWidth) {
@@ -214,20 +215,10 @@ class StarBar @JvmOverloads constructor(
 
     /**
      * Set Star Select Method
-     * @param starSelectMethod StarBarSelectMethod
+     * @param starSelectMethod Int
      */
-    fun setStarSelectMethod(starSelectMethod: StarBarSelectMethod) {
-        this.starSelectMethod = starSelectMethod.value
-    }
-
-    /**
-     * Get Star Select Method
-     */
-    fun getStarSelectMethod() = when (starSelectMethod) {
-        StarBarSelectMethod.Unable.value -> StarBarSelectMethod.Unable
-        StarBarSelectMethod.Click.value -> StarBarSelectMethod.Click
-        StarBarSelectMethod.Sliding.value -> StarBarSelectMethod.Sliding
-        else -> StarBarSelectMethod.Unable
+    fun setStarSelectMethod(@StarBarSelectMethod.SelectMethod starSelectMethod: Int) {
+        this.starSelectMethod = starSelectMethod
     }
 
     /**

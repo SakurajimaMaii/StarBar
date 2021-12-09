@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.gcode.widget.StarBarException
-import com.gcode.widget.StarBarSelectMethod
 import com.gcode.widget.StarBar
+import com.gcode.widget.StarBarSelectMethod
 
 class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,6 @@ class TestActivity : AppCompatActivity() {
         }
 
         val (width,height) = mStarbar.getStarBitMapSize()
-        Log.d("TestActivity","$width $height ${mStarbar.getStarSelectMethod()}")
+        Log.d("TestActivity","$width $height ${mStarbar.starSelectMethod}")
     }
 }

@@ -1,8 +1,20 @@
-# StarBar
+<h1 align="center">StarBar</h1>
 
-## Project renderings
+<p align="center">A starbar widget for android</p>
 
-<img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="图片名称" align=center />
+<p align="center">
+<img src="https://img.shields.io/badge/compile%20sdk%20version-31-blue"/>
+<img src="https://img.shields.io/badge/min%20sdk%20version-23-yellowgreen"/>
+<img src="https://img.shields.io/badge/target%20sdk%20version-31-orange"/>
+<img src="https://img.shields.io/badge/jdk%20version-11-%2300b894"/>
+<img src="https://jitpack.io/v/SakurajimaMaii/StarBar.svg">
+</p>
+
+<div align="center">English | <a href="https://github.com/SakurajimaMaii/StarBar/blob/master/README_CN.md">简体中文</a></div>
+
+## Preview
+
+<img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="example.gif" align=center />
 
 ## How to
 
@@ -23,7 +35,7 @@ Add the dependency
 
 ```gradle
 dependencies {
-    'com.github.SakurajimaMaii:StarBar:0.0.5'
+     implementation 'com.github.SakurajimaMaii:StarBar:0.0.5'
 }
 ```
 
@@ -50,21 +62,21 @@ dependencies {
 
 ```kotlin
 mStarbar.apply {
-    getStarRating()
-    setStarSelectedBitmap(R.drawable.ic_star_dark_blue_selected)
-    setStarNormalBitmap(R.drawable.ic_star_dark_blue_normal)
-    setStarMaxNumber(5)
-    setStarBitMapSize(40,40)
-    setStarSpaceWidth(20)
-    setStarSelectMethod(StarBarSelectMethod.SlidingOperation)
-    try {
-        setStarRating(3.6f)
-    }catch (e: StarBarException){
-        e.printStackTrace()
-    }
-}
+      getStarRating()
+      setStarSelectedBitmap(R.drawable.ic_star_dark_blue_selected)
+      setStarNormalBitmap(R.drawable.ic_star_dark_blue_normal)
+      setStarMaxNumber(5)
+      setStarBitMapSize(40,40)
+      setStarIntervalWidth(20)
+      setStarSelectMethod(StarBarSelectMethod.Sliding)
+      try {
+          setStarRating(3.6f)
+      }catch (e: StarBarException){
+          e.printStackTrace()
+      }
+  }
 ```
 
 ## Afterword
 
-The problem code about attributes or methods is very detailed, so I won't explain it anymore. Please refer to the source code for details.
+The detail about attributes or methods is very clear in code comment, so I won't explain it anymore. Please refer to the source code for details.

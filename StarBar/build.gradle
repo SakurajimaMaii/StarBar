@@ -35,7 +35,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'io.github.sakurajimamai'
+                groupId = 'com.github.SakurajimaMaii'
                 artifactId = 'starbar'
                 version = '0.0.5'
             }
