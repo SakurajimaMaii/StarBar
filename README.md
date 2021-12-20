@@ -14,7 +14,7 @@
 
 ## Preview
 
-<img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="example.gif" align=center />
+<div align="center"><img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="example.gif"/></div>
 
 ## How to
 
