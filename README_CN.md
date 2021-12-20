@@ -20,7 +20,7 @@
 - 😎 支持自定义星星数量
 - 😯 支持自定义星星图片尺寸
 
-<div align="center"><img src="https://img-blog.csdnimg.cn/7e5c8446968646e5876ffc39213f6eee.gif" width = "40%" alt="图片名称" /></div>
+<div align="center"><img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="example.gif"/></div>
 
 ## 如何使用
 
