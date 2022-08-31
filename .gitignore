@@ -28,3 +28,5 @@ out/
 #output
 debug/
 release/
+
+local.properties
