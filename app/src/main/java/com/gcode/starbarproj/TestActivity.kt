@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.gcode.widget.StarBarException
-import com.gcode.widget.StarBar
-import com.gcode.widget.StarBarSelectMethod
+import com.gcode.starbar.StarBarException
+import com.gcode.starbar.StarBar
+import com.gcode.starbar.StarBarSelectMethod
 
 class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

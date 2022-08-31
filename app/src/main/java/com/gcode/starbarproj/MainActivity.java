@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.gcode.widget.StarBar;
-import com.gcode.widget.StarBarIllegalParamException;
+import com.gcode.starbar.StarBar;
+import com.gcode.starbar.StarBarIllegalParamException;
 
 
 public class MainActivity extends AppCompatActivity {

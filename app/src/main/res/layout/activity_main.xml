@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 
-    <com.gcode.widget.StarBar
+    <com.gcode.starbar.StarBar
         android:id="@+id/sbv_starbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

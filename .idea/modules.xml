@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBarSampleDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBarSampleDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.main.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/StarBarSampleDemo.StarBar.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/StarBarSampleDemo.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1558632958/PluginVersion.iml" filepath="$PROJECT_DIR$/.idea/modules/1558632958/PluginVersion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1558632958/PluginVersion.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1558632958/PluginVersion.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1558632958/PluginVersion.test.iml" filepath="$PROJECT_DIR$/.idea/modules/1558632958/PluginVersion.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SampleStarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/SampleStarBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.main.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/StarBar/SampleStarBar.StarBar.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SampleStarBar.app.unitTest.iml" />
     </modules>
   </component>
 </project>
