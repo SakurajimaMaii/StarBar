@@ -12,6 +12,12 @@
 
 <div align="center">English | <a href="https://github.com/SakurajimaMaii/StarBar/blob/master/README_CN.md">简体中文</a></div>
 
+## NO LONGER MAINTAINED
+
+I won't add any new features further.
+
+**Note：I recommend that you use [VastTools](https://github.com/SakurajimaMaii/VastUtils), Starbar will be updated in this library later.**
+
 ## Preview
 
 <div align="center"><img src="https://github.com/SakurajimaMaii/GStarBar/blob/master/resources/gstarbar.gif" width = "380" height = "800" alt="example.gif"/></div>

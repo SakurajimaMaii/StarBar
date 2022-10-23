@@ -12,6 +12,12 @@
 
 <div align="center"><a href="https://github.com/SakurajimaMaii/StarBar/blob/master/README.md">English</a> | 简体中文 </div>
 
+## 停止维护声明
+
+我不会进一步添加任何新功能。
+
+**注：我推荐你使用 [VastTools](https://github.com/SakurajimaMaii/VastUtils)，Starbar后续会在该库更新。**
+
 ## 💫 特性
 
 - 😀 支持三种操作 `Unable 不可操作` `Click 整数点击` `Sliding 滑动`
