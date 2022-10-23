@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-import com.gcode.plugin.version.AndroidX
-import com.gcode.plugin.version.Libraries
-import com.gcode.plugin.version.Version
+import cn.govast.plugin.version.*
 
 plugins{
     id("com.android.application")
     id("kotlin-android")
-    id("com.gcode.plugin.version")
+    id("cn.govast.plugin.version")
 }
 
 android {
@@ -46,13 +44,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    namespace = "com.gcode.starbarproj"
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     implementation(project(":StarBar"))
     implementation(Libraries.junit)
-    implementation(Libraries.material)
+    implementation(Google.material)
     implementation(AndroidX.appcompat)
     implementation(AndroidX.constraintlayout)
 }

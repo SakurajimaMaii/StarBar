@@ -14,15 +14,13 @@
  * limitations under the License.
  */
 
-import com.gcode.plugin.version.AndroidX
-import com.gcode.plugin.version.Libraries
-import com.gcode.plugin.version.Version
+import cn.govast.plugin.version.*
 
 plugins {
     id("com.android.library")
     id("kotlin-android")
     id("maven-publish")
-    id("com.gcode.plugin.version")
+    id("cn.govast.plugin.version")
 }
 
 android {
@@ -44,15 +42,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = Version.java_version
+        targetCompatibility = Version.java_version
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = Version.java_version.toString()
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+    namespace = "cn.govast.starbar"
 }
 
 afterEvaluate {
@@ -61,7 +60,7 @@ afterEvaluate {
             create<MavenPublication>("maven") {
                 groupId = "io.github.SakurajimaMaii"
                 artifactId = "starbar"
-                version = "0.0.5"
+                version = "0.0.6"
             }
         }
     }
@@ -72,7 +71,6 @@ dependencies {
     implementation(AndroidX.appcompat)
     androidTestImplementation(AndroidX.junit)
     androidTestImplementation(AndroidX.espresso_core)
-
-    implementation(Libraries.material)
+    implementation(Google.material)
     testImplementation(Libraries.junit)
 }

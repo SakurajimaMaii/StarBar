@@ -20,9 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.gcode.starbar.StarBar;
-import com.gcode.starbar.StarBarIllegalParamException;
-
+import cn.govast.starbar.StarBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             mStarbar.setStarBitMapSize(40,40);
-        } catch (StarBarIllegalParamException e) {
+        } catch (StarBar.StarBarIllegalParamException e) {
             e.printStackTrace();
         }
     }

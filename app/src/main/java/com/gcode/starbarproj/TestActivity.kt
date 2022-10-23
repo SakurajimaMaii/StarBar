@@ -20,9 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.gcode.starbar.StarBarException
-import com.gcode.starbar.StarBar
-import com.gcode.starbar.StarBarSelectMethod
+import cn.govast.starbar.StarBar
 
 class TestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,12 +39,8 @@ class TestActivity : AppCompatActivity() {
             setStarMaxNumber(5)
             setStarBitMapSize(40,40)
             setStarIntervalWidth(20)
-            setStarSelectMethod(StarBarSelectMethod.Sliding)
-            try {
-                setStarRating(3.6f)
-            }catch (e: StarBarException){
-                e.printStackTrace()
-            }
+            setStarSelectMethod(StarBar.SelectMethod.Sliding)
+            setStarRating(3.6f)
         }
 
         val (width,height) = mStarbar.getStarBitMapSize()

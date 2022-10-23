@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gcode.starbar
+package cn.govast.starbar
 
 import android.content.Context
 import android.graphics.*
@@ -24,7 +24,6 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
-import com.gcode.gstarbar.R
 import kotlin.math.max
 
 // Author: Vast Gui
@@ -39,11 +38,25 @@ class StarBar @JvmOverloads constructor(
     defStyle: Int = 0
 ) : View(context, attrs, defStyle) {
 
-    companion object {
-        // Star Orientation
-        const val HORIZONTAL = 0
-        const val VERTICAL = 1
+    enum class Orientation{
+        HORIZONTAL,VERTICAL
     }
+
+    enum class SelectMethod{
+        Unable,Click,Sliding
+    }
+
+    /**
+     * Will be thrown when the param is illegal.
+     * @property message String?
+     */
+    class StarBarIllegalParamException(override val message: String?): Throwable(message)
+
+    /**
+     * Will be thrown when starbar bitmap has wrong.
+     * @property message String?
+     */
+    class StarBarBitmapException(override val message: String?): Throwable(message)
 
     data class StarSize(val width: Int, val height: Int)
 
@@ -70,23 +83,23 @@ class StarBar @JvmOverloads constructor(
     private var solidStarNum = 0
 
     // Will be use when extra selected star bitmap part.
-    private var rectSrc: Rect? = null
+    private var rectSrc: Rect = Rect()
     private var dstF: Rect = Rect()
 
     private val paint: Paint = Paint()
 
     /**
      * Star select method
-     * @see [StarBarSelectMethod.Click] [StarBarSelectMethod.Sliding] [StarBarSelectMethod.Unable]
+     * @see [SelectMethod.Click] [SelectMethod.Sliding] [SelectMethod.Unable]
      */
-    var starSelectMethod: Int
+    var starSelectMethod: SelectMethod
         private set
 
     /**
      * Star orientation
-     * @see [HORIZONTAL] [VERTICAL]
+     * @see Orientation
      */
-    private val starOrientation: Int
+    private val starOrientation: Orientation
 
     private val density = context.resources.displayMetrics.density
 
@@ -94,12 +107,12 @@ class StarBar @JvmOverloads constructor(
         // Draw selected star.
         var solidStartPoint = 0
         when (starOrientation) {
-            HORIZONTAL -> for (i in 1..solidStarNum) {
+            Orientation.HORIZONTAL -> for (i in 1..solidStarNum) {
                 canvas.drawBitmap(starSelectedBitmap, solidStartPoint.toFloat(), 0f, paint)
                 solidStartPoint += starIntervalWidth + starSelectedBitmap.width
             }
 
-            VERTICAL -> for (i in 1..solidStarNum) {
+            Orientation.VERTICAL -> for (i in 1..solidStarNum) {
                 canvas.drawBitmap(starSelectedBitmap, 0f, solidStartPoint.toFloat(), paint)
                 solidStartPoint += starIntervalWidth + starSelectedBitmap.height
             }
@@ -109,21 +122,21 @@ class StarBar @JvmOverloads constructor(
         // Unselected Star number.
         val hollowStarNum = starMaxNumber - solidStarNum
         when (starOrientation) {
-            HORIZONTAL -> for (j in 1..hollowStarNum) {
+            Orientation.HORIZONTAL -> for (j in 1..hollowStarNum) {
                 canvas.drawBitmap(starUnselectedBitmap, hollowStartPoint.toFloat(), 0f, paint)
                 hollowStartPoint += starIntervalWidth + starUnselectedBitmap.width
             }
-            VERTICAL -> for (j in 1..hollowStarNum) {
+            Orientation.VERTICAL -> for (j in 1..hollowStarNum) {
                 canvas.drawBitmap(starUnselectedBitmap, 0f, hollowStartPoint.toFloat(), paint)
                 hollowStartPoint += starIntervalWidth + starUnselectedBitmap.width
             }
         }
         // Extra selected star bitmap Length.
         when (starOrientation) {
-            HORIZONTAL -> {
+            Orientation.HORIZONTAL -> {
                 canvas.drawBitmap(starSelectedBitmap, rectSrc, dstF, paint)
             }
-            VERTICAL -> {
+            Orientation.VERTICAL -> {
                 canvas.drawBitmap(starSelectedBitmap, rectSrc, dstF, paint)
             }
         }
@@ -131,12 +144,12 @@ class StarBar @JvmOverloads constructor(
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (starSelectMethod) {
-            StarBarSelectMethod.Unable -> {
+            SelectMethod.Unable -> {
                 return super.onTouchEvent(event)
             }
-            StarBarSelectMethod.Click -> {
+            SelectMethod.Click -> {
                 if (event.action == MotionEvent.ACTION_DOWN) {
-                    if (starOrientation == HORIZONTAL) {
+                    if (starOrientation == Orientation.HORIZONTAL) {
                         val totalWidth = (starMaxNumber * (starWidth + starIntervalWidth)).toFloat()
                         if (event.x <= totalWidth) {
                             val newStarRating =
@@ -156,8 +169,8 @@ class StarBar @JvmOverloads constructor(
                 performClick()
                 return super.onTouchEvent(event)
             }
-            StarBarSelectMethod.Sliding -> {
-                if (starOrientation == HORIZONTAL) {
+            SelectMethod.Sliding -> {
+                if (starOrientation == Orientation.HORIZONTAL) {
                     val totalWidth = (starMaxNumber * (starWidth + starIntervalWidth)).toFloat()
                     if (event.x <= totalWidth) {
                         val newStarRating = event.x / (starWidth + starIntervalWidth) + 1
@@ -188,7 +201,7 @@ class StarBar @JvmOverloads constructor(
      * @throws StarBarIllegalParamException
      */
     @Throws(StarBarIllegalParamException::class)
-    fun setStarRating(@FloatRange(from = 1.0) starRating: Float) {
+    fun setStarRating(@FloatRange(from = 1.0) starRating: Float) = apply {
         when {
             starRating.toInt() > starMaxNumber -> {
                 throw StarBarIllegalParamException("The number of selected stars must less than $starMaxNumber")
@@ -200,7 +213,7 @@ class StarBar @JvmOverloads constructor(
                     ((starRating - solidStarNum) * starUnselectedBitmap.width).toInt()
                 var extraSolidStarPoint = 0
                 when (starOrientation) {
-                    HORIZONTAL -> {
+                    Orientation.HORIZONTAL -> {
                         for (i in 1..solidStarNum) {
                             extraSolidStarPoint += starIntervalWidth + starSelectedBitmap.width
                         }
@@ -212,7 +225,7 @@ class StarBar @JvmOverloads constructor(
                             starUnselectedBitmap.height
                         )
                     }
-                    VERTICAL -> {
+                    Orientation.VERTICAL -> {
                         for (i in 1..solidStarNum) {
                             extraSolidStarPoint += starIntervalWidth + starSelectedBitmap.height
                         }
@@ -236,7 +249,7 @@ class StarBar @JvmOverloads constructor(
      * Set Star Select Method
      * @param starSelectMethod Int
      */
-    fun setStarSelectMethod(@StarBarSelectMethod.SelectMethod starSelectMethod: Int) {
+    fun setStarSelectMethod(starSelectMethod: SelectMethod) = apply {
         this.starSelectMethod = starSelectMethod
     }
 
@@ -246,7 +259,7 @@ class StarBar @JvmOverloads constructor(
      * @param starHeight Int
      */
     @Throws(StarBarIllegalParamException::class)
-    fun setStarBitMapSize(@IntRange(from = 0) starWidth: Int,@IntRange(from = 0) starHeight: Int) {
+    fun setStarBitMapSize(@IntRange(from = 0) starWidth: Int,@IntRange(from = 0) starHeight: Int) = apply {
         this.starWidth = (starWidth * density).toInt()
         this.starHeight = (starHeight * density).toInt()
         starSelectedBitmap = getZoomBitmap(starSelectedBitmap)
@@ -276,7 +289,7 @@ class StarBar @JvmOverloads constructor(
      * @param starSpaceWidth Int
      * @throws StarBarIllegalParamException
      */
-    fun setStarIntervalWidth(@IntRange(from = 0) starSpaceWidth: Int) {
+    fun setStarIntervalWidth(@IntRange(from = 0) starSpaceWidth: Int) = apply {
         this.starIntervalWidth = (starSpaceWidth * density).toInt()
         invalidate()
     }
@@ -289,7 +302,7 @@ class StarBar @JvmOverloads constructor(
     /**
      * Set the number of star.
      */
-    fun setStarMaxNumber(@IntRange(from = 0) starMaxNumber: Int) {
+    fun setStarMaxNumber(@IntRange(from = 0) starMaxNumber: Int) = apply {
         this.starMaxNumber = starMaxNumber
         invalidate()
     }
@@ -302,7 +315,7 @@ class StarBar @JvmOverloads constructor(
     /**
      * Set the bitmap of the be selected star.
      */
-    fun setStarSelectedBitmap(bitmap: Bitmap) {
+    fun setStarSelectedBitmap(bitmap: Bitmap) = apply {
         starSelectedBitmap = getZoomBitmap(bitmap)
     }
 
@@ -311,7 +324,7 @@ class StarBar @JvmOverloads constructor(
      * @param drawableId Int
      */
     @Throws(StarBarBitmapException::class)
-    fun setStarSelectedBitmap(@DrawableRes drawableId: Int) {
+    fun setStarSelectedBitmap(@DrawableRes drawableId: Int) = apply {
         if (BitmapFactory.decodeResource(context.resources, drawableId) == null) {
             throw StarBarBitmapException("Drawable resource conversion BitMap failed")
         } else {
@@ -330,7 +343,7 @@ class StarBar @JvmOverloads constructor(
      * Set the bitmap of the be unselected star.
      * @param bitmap Bitmap
      */
-    fun setStarNormalBitmap(bitmap: Bitmap) {
+    fun setStarNormalBitmap(bitmap: Bitmap) = apply {
         starUnselectedBitmap = getZoomBitmap(bitmap)
     }
 
@@ -339,7 +352,7 @@ class StarBar @JvmOverloads constructor(
      * @param drawableId Int
      */
     @Throws(StarBarBitmapException::class)
-    fun setStarNormalBitmap(@DrawableRes drawableId: Int) {
+    fun setStarNormalBitmap(@DrawableRes drawableId: Int) = apply {
         if (BitmapFactory.decodeResource(context.resources, drawableId) == null) {
             throw StarBarBitmapException("Drawable resource conversion BitMap failed")
         } else {
@@ -369,11 +382,11 @@ class StarBar @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         when (starOrientation) {
-            HORIZONTAL -> setMeasuredDimension(
+            Orientation.HORIZONTAL -> setMeasuredDimension(
                 measureLong(widthMeasureSpec),
                 measureShort(heightMeasureSpec)
             )
-            VERTICAL -> setMeasuredDimension(
+            Orientation.VERTICAL -> setMeasuredDimension(
                 measureShort(widthMeasureSpec),
                 measureLong(heightMeasureSpec)
             )
@@ -446,8 +459,17 @@ class StarBar @JvmOverloads constructor(
         } else {
             getZoomBitmap(tempUnselectedBitmap)
         }
-        starOrientation = a.getInt(R.styleable.StarBar_star_orientation, HORIZONTAL)
-        starSelectMethod = a.getInt(R.styleable.StarBar_star_select_method, 0)
+        starOrientation = when(a.getInt(R.styleable.StarBar_star_orientation, 0)){
+            0 -> Orientation.HORIZONTAL
+            1 -> Orientation.VERTICAL
+            else -> Orientation.HORIZONTAL
+        }
+        starSelectMethod = when(a.getInt(R.styleable.StarBar_star_select_method, 0)){
+            0 -> SelectMethod.Unable
+            1 -> SelectMethod.Click
+            2 -> SelectMethod.Sliding
+            else -> SelectMethod.Sliding
+        }
         a.recycle()
     }
 }
